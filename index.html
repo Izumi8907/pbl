@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <!--so that responsive in viewport-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <!--Font Awesome CDN-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        <!--dunno where to put-->
+  <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>-->
+    
+  
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <!--this berybery important,it link our local css file to the html-->
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
+
+
+        <!-- Modal effect -->
+      <style>
+        .glass-modal .modal-content {
+          background: rgba(10, 25, 47, 0.8);  
+          backdrop-filter: blur(12px);        
+          border-radius: 20px;                
+          border: 2px solid rgba(0, 123, 255, 0.5);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+          color: #fff;                        
+        }
+
+
+        .glass-modal .modal-header {
+          border-bottom: none;
+        }
+
+
+        .glass-modal .modal-title {
+          font-weight: bold;
+          color: #0d6efd;
+        }
+
+
+        .glass-modal .btn-close {
+          filter: invert(1);
+        }
+      </style>
+
+
+
+      <!-- 🔹 CSS snoweffect + animation -->
+        <style>
+        /* Glass effect */
+        .glass-modal .modal-content {
+          background: rgba(10, 25, 47, 0.85);
+          backdrop-filter: blur(12px);
+          border-radius: 20px;
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+          color: #fff;
+          overflow: hidden;
+          position: relative;
+        }
+
+
+        /* Snow container */
+        .snow-container::before,
+        .snow-container::after {
+          content: "";
+          position: absolute;
+          top: -100%;
+          left: 0;
+          width: 200%;
+          height: 200%;
+          background-image: url("images/snow.png");
+          background-size: 80px 80px;
+          opacity: 0.6;
+          animation: snow 20s linear infinite;
+          pointer-events: none;
+        }
+
+
+        .snow-container::after {
+          animation-duration: 30s;
+          opacity: 0.3;
+        }
+
+
+        /* snow fall animation */
+        @keyframes snow {
+          from { transform: translateY(0); }
+          to { transform: translateY(100%); }
+        }
+
+
+        /* Fade in */
+        .animate-fade {
+          animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+
+        /* up to slide */
+        .animate-slide {
+          animation: slideUp 1.2s ease-in-out;
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0);}
+        }
+        </style>
+
+
+
+    
+
+
+
+
+        <!--back to top button-->
+        <style>
+            body {
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 20px;
+            }
+
+            #myBtn {
+              display: none;
+              position: fixed;
+              bottom: 20px;
+              right: 30px;
+              z-index: 99;
+              font-size: 18px;
+              border: none;
+              outline: none;
+              background-color: #002a69;
+              color: white;
+              cursor: pointer;
+              padding: 15px;
+              border-radius: 4px;
+            }
+
+            #myBtn:hover {
+              background-color: #003cff;
+            }
+         </style>   
+
+        <title>Frozen 2</title>
+
+    </head>
+    <body>
+
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Back To Top</button>
+
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+}
+    </script>
+
+
+
+
+
+     <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;" >
+  <!-- Navbar content -->
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+    <img src="images/Frozen-Logo.png" alt="Frozen2logo" width="105" height="65">
+    </a>
+
+    <!--hamburger-->
+    <button class="navbar-toggler" type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#Synopsis">Story</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Casts">Casts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Trailer">Trailer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-bs-toggle="modal"
+            data-bs-target="#showtimeModal" >Contact us</a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            More
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#behindModal">Behind the scenes</a></li>
+            <li><a class="dropdown-item" href="#"
+             data-bs-toggle="modal"
+             data-bs-target="#releaseModal">Release Date</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#Contact">Contact & Social Media</a></li>
+          </ul>
+        </li> <!-- closes the dropdown -->
+      </ul>
+    </div>
+  </div>
+</nav>
+      
+
+
+
+
+
+
+  <section class="container-fluid">
+  <div>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/frozenone.jpg" class="d-block w-100" alt="pictures from frozen ip"/>
+      </div>
+      <div class="carousel-item">
+        <img src="images/frozenthree.jpg" class="d-block w-100" alt="pictures from frozen ip"/>
+      </div>
+      <div class="carousel-item">
+        <img src="images/frozentwo.jpg" class="d-block w-100" alt="pictures from frozen ip"/>
+      </div>
+    </div>
+  </div>
+  </section>
+
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+
+
+
+     
+
+        
+ 
+
+    <!--had to add containerfluid if no its just display the snow and ur other section didnt display-->
+    <div class="container-fluid">
+    <div class="snowflake" style="left:10%; animation-duration: 10s;">❄</div>
+    <div class="snowflake" style="left:20%; animation-duration: 12s;">❄</div>
+    <div class="snowflake" style="left:30%; animation-duration: 8s;">❄</div>
+    <div class="snowflake" style="left:50%; animation-duration: 15s;">❄</div>
+    <div class="snowflake" style="left:70%; animation-duration: 18s;">❄</div>
+    <div class="snowflake" style="left:85%; animation-duration: 20s;">❄</div>
+        </div>
+
+
+<!--hero head-->
+  <section id="Synopsis">
+   <div class="container-fluid text-center p-5 my-4" >
+        <h1>Synopsis</h1>
+        <div class="row align-items-center p-5">
+        <div class="col-md-6">
+            <div class="row g-0">
+            <div class="col-6 p-0">
+            <img src="images/synopsis3.jpg" class="img-thumbnail" alt="Synopsis Image">
+          </div>
+        <div class="col-6">
+        <img src="images/synopsis2.jpg" class="img-thumbnail" alt="Synopsis Image">
+        </div>
+        </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+       <p class="lead p-4 text-white rounded" style="background-color: #24407a;">Elsa, the Snow Queen, has an extraordinary gift -- the power to create ice and snow.
+            But no matter how happy she is to be surrounded by the people of Arendelle, Elsa finds herself strangely unsettled.
+            After hearing a mysterious voice call out to her, Elsa travels to the enchanted forests and dark seas beyond her kingdom -- an adventure that soon turns into a journey of self-discovery.
+        </p>
+        </div>
+    </div>
+  </div>
+  </section>
+
+
+<!--cast section-->
+  <section id="Casts">
+   <div class="container-fluid text-center p-3 my-4">
+        <h1>Casts</h1>
+        <p class="lead">Below are the characters and the casts in the movie.<br>Please do hover on the character cards.</p>
+        
+    </div>
+  </section>
+
+
+
+<section class="container px-5" id="scrollingcards">
+    <div class="cards-wrapper">
+    
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/elsa.jpg" alt="Elsa">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/idinamenzel.jpg" alt="Idina Mezel">
+          </div>
+        </div>
+      </div>
+      <p>Idina Mezel as Elsa</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/anna.jpg" alt="Anna">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/kristenbell.jpg" alt="Kristen Bell">
+          </div>
+        </div>
+      </div>
+      <p>Kristen Bell as Anna</p>
+    </div>
+
+
+    <!-- Repeat more cards -->
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/kristoff.jpg" alt="Kristoff">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/jonathangroff.jpg" alt="Jonathan Groff">
+          </div>
+        </div>
+      </div>
+      <p>Jonathan Groff as Kristoff</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/sven.jpg" alt="Sven">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/frankwelker.jpg" alt="Frank Welker">
+          </div>
+        </div>
+      </div>
+      <p>Frank Welker as Sven</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/olaf.jpg" alt="Olaf">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/joshgad.jpg" alt="Josh Gad">
+          </div>
+        </div>
+      </div>
+      <p>Josh Gad as Olaf</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/mattias.jpg" alt="Lieutenant Mattias">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/sterlingkbrown.jpg" alt="Sterling K. Brown">
+          </div>
+        </div>
+      </div>
+      <p>Sterling K. Brown as Lieutenant Mattias</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/queeniduna.jpg" alt="Queen Iduna">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/evanrachelwood.jpg" alt="Evam Rachel Wood">
+          </div>
+        </div>
+      </div>
+      <p>Evan Rachel Wood as Queen Iduna</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/thevoice.jpg" alt="The Voice">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/aurora.jpg" alt="Aurora">
+          </div>
+        </div>
+      </div>
+      <p>Aurora (Singer) as The Voice</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/agnarr.jpg" alt="King Agnarr">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/alfredmolina.jpg" alt="Alfred Molina">
+          </div>
+        </div>
+      </div>
+      <p>Alfred Molina as King Agnarr</p>
+    </div>
+
+
+    <div class="card">
+      <div class="flipping-image">
+        <div class="flipping-image-inner">
+          <div class="flipping-image-front">
+            <img src="images/yelena.jpg" alt="Yelena">
+          </div>
+          <div class="flipping-image-back">
+            <img src="images/marthaplimton.jpg" alt="Marta Plimpton">
+          </div>
+        </div>
+      </div>
+      <p>Martha Plimpton as Yelana</p>
+    </div>
+
+
+
+
+  </div>
+</section>
+
+
+
+
+
+<!--hero head-->
+  <section id="Trailer" class="container-fluid p-3 my-4">
+   <div class="text-center p-5 my-4">
+        <h1>Frozen 2 Trailer</h1>
+        <p class="lead p-5">Below is the trailer of Frozen 2 movie.</p>
+        
+    </div>
+  </section>
+
+
+
+  
+
+  <!-- script placed at end so DOM exists -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const COUNT = 120; // change for denser/sparser snow
+      for (let i = 0; i < COUNT; i++) {
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        flake.textContent = '❆'; // snow glyph - you can use '❅' or '•'
+
+        // randomize properties
+        const left = (Math.random() * 100).toFixed(2) + 'vw';
+        const size = (Math.random() * 18 + 8).toFixed(2) + 'px';
+        const opacity = (Math.random() * 0.6 + 0.3).toFixed(2);
+        const duration = (Math.random() * 12 + 6).toFixed(2); // seconds
+        const delay = (Math.random() * -20).toFixed(2); // negative -> already mid-fall
+        const swayPx = (Math.random() * 120 - 60).toFixed(2) + 'px'; // horizontal sway
+
+        flake.style.left = left;
+        flake.style.fontSize = size;
+        flake.style.opacity = opacity;
+        // set CSS var for horizontal sway, used inside keyframes
+        flake.style.setProperty('--sway', swayPx);
+        // set the whole animation string in one go (duration, timing, delay, iteration, name)
+        flake.style.animation = `${duration}s linear ${delay}s infinite fall`;
+
+        document.body.appendChild(flake);
+      }
+
+      // quick debug info in console
+      console.log('snowflakes created:', document.querySelectorAll('.snowflake').length);
+    });
+  </script>
+
+
+
+
+
+
+<!-- 🔹 Modal: Behind the Scenes -->
+<div class="modal fade glass-modal" id="behindModal" tabindex="-1" aria-labelledby="behindModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="behindModalLabel">Behind the Scenes</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="ratio ratio-16x9">
+          <!-- YouTube Trailer Link -->
+          <iframe src="https://www.youtube.com/embed/veoBXRR2qXk"
+                  title="Frozen II Trailer"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 🔹 Modal: Release Date -->
+<div class="modal fade glass-modal" id="releaseModal" tabindex="-1" aria-labelledby="releaseModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="releaseModalLabel">Release Date</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="release-date-text"><a href="https://share.google/FZ4NLeW2Qhhqi0tz7" target="_blank">November 22, 2019</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Behind the Scenes modal stop video on close
+  const behindModal = document.getElementById('behindModal');
+  behindModal.addEventListener('hidden.bs.modal', function () {
+    const iframe = behindModal.querySelector('iframe');
+    iframe.src = iframe.src;
+  });
+</script>
+<!-- 🔹 Modal: Show Time (Form Version) -->
+<div class="modal fade glass-modal" id="showtimeModal" tabindex="-1" aria-labelledby="showtimeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content snow-container">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="showtimeModalLabel">Book Your Frozen II Showtime</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="showtimeForm">
+          <!-- Poster -->
+          <div class="text-center mb-3">
+            <img src="images/Showtime.jpg" class="img-fluid rounded shadow-lg animate-fade" alt="Frozen II Poster" style="max-height:200px;">
+          </div>
+
+          <!-- Name -->
+          <div class="mb-3">
+            <label for="inputName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Enter your name" required>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="email@example.com" required>
+          </div>
+
+          <!-- Showtime Selection -->
+          <div class="mb-3">
+            <label for="showSelect" class="form-label">Select Showtime</label>
+            <select id="showSelect" class="form-select" required>
+              <option value="" selected disabled>Choose a date & time</option>
+              <option>📅 November 22, 2019 — ⏰ 7:00 PM</option>
+              <option>📅 November 23, 2019 — ⏰ 9:30 PM</option>
+            </select>
+          </div>
+
+          <!-- Consent -->
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="consentCheck" required>
+            <label class="form-check-label" for="consentCheck">
+              I consent to my data being used for booking purposes.
+            </label>
+          </div>
+
+          <!-- Buttons -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <i class="fa fa-check-circle fa-3x text-success mb-3"></i>
+        <p>Your booking has been submitted!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById("showtimeForm").addEventListener("submit", function(event){
+  event.preventDefault();
+
+  const name = document.getElementById("inputName").value.trim();
+  const email = document.getElementById("inputEmail").value.trim();
+  const consent = document.getElementById("consentCheck").checked;
+
+  if (!name || !email || !consent) {
+    alert("Please fill in all fields and tick consent checkbox before submitting.");
+    return;
+  }
+
+  // ✅ 1. Close current showtime modal first
+  const showtimeModalEl = document.getElementById('showtimeModal');
+  const showtimeModal = bootstrap.Modal.getInstance(showtimeModalEl);
+  if (showtimeModal) {
+    showtimeModal.hide();
+  }
+
+  // ✅ 2. Wait until animation finished, then show success modal
+  setTimeout(() => {
+    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    successModal.show();
+  }, 400);
+
+  // ✅ 3. Reset form after submit
+  this.reset();
+});
+
+// ✅ 4. When success modal is closed, remove dark backdrop
+const successModalEl = document.getElementById('successModal');
+successModalEl.addEventListener('hidden.bs.modal', function () {
+  document.body.classList.remove('modal-open');
+  const backdrops = document.querySelectorAll('.modal-backdrop');
+  backdrops.forEach(backdrop => backdrop.remove());
+
+  // ✅ Optional: Scroll back to top or show home section
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+
+
+
+
+
+ <!-- Trailer Section -->
+  <div class="cinematic-trailer text-center " style="display:flex; justify-content:center; width:100%; box-sizing:border-box; padding:1px; ">
+    
+    <div class="ratio ratio-16x9 "  style="width:80%; max-width:1000px; aspect-ratio:16/9; border:none; padding-bottom: 30px;">
+    <!--copy the link from yt share button, they have the embbed thing there-->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Zi4LMpSDccc?si=JbWgRIOe3qpl4VA1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen ></iframe>
+    
+    </div>
+  </div>
+
+
+
+
+
+  <!--just an empty container for padding cuz cant seem to work for the usual padding or margin on the trailer smh-->
+    <div style="height: 90px; width: 100%; "></div>
+    <div style="padding-top: 50px;">
+      
+    </div>
+
+
+
+    
+   
+
+    <!--Footer Section-->
+  <footer class="bg-dark text-center text-white mt-5 " id="Contact">
+  <!-- Contact Section -->
+  <section id="footer" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Contact & Social Media</h2>
+    <div class="row">
+    <div class="container-fluid  pt4">
+    <section class="mb-4">
+      
+      <!-- Telegram -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color:#983b3b" href="https://www.youtube.com/@Disney" role="button">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <!-- TikTok -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color:#24263a" href="https://www.tiktok.com/@disney?lang=en" role="button">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <!-- Instagram -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color:#ac2bac" href="https://www.instagram.com/disney/" role="button">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <!-- Telegram -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color:#3b5998" href="https://x.com/Disney?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" role="button">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+
+      </section>
+  </div>
+
+
+
+  
+
+
+    
+  
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </div>
+</div>
+
+
+
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+   <div class="bg-dark text-white text-center py-3 mt-5">
+    <small>
+  &copy; Disney Pictures Frozen 2 2025.All rights reserved.
+  </small>
+</div>
+  <div class="text-center" style="background-color: rgba(0, 0, 0, 0.05);">
+    <small>
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </small>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+
+
+
+
+    </body>
+
+    
+
+</html>
